@@ -1,4 +1,5 @@
 # Artisanal
+
 This is the main branch for Artisanal Project. For the Artisan project, there is an ESP32-S3-SIM7670G-4G. The device will capture images of the pyrolysis process, retrieve GPS data and battery percentage, and send this information to a doctype (Frappe ERP NEXT FRAMEWORK) in the dMRV system via the cellular 4G network.
 
 Connection - [url = https://iotdev.frappe.cloud/
@@ -66,7 +67,9 @@ SIM7670G AT Commands for GNSS (GPS) Control
 AT+CGNSSPWR=1: Turn GNSS power on.
 AT+CGNSSPWR=0: Turn GNSS power off.
 AT+CGNSSTST=1: Start GNSS data output.
-AT+CGNSINF: Read GNSS information (latitude, longitude, time, speed, etc.).
+AT+CGNSSPORTSWITCH=0,1
+<parse_data_port> 0 output theparseddataofNMEAtoUSBATport, 1 output theparseddataofNMEAtoUARTport.
+<nmea_data_port> 0 outputrawNMEAdatatoUSBNMEAport , 1 outputrawNMEAdatatoUARTport.
 
 ### 3. Camera Interface
 24-PIN Interface compatible with camera modules such as OV2640 and OV5640.

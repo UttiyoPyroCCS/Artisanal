@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <style>
+        body {
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #003366;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.grid-item {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.live-feed {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
+}
+
+.gps-battery {
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.temperature-section {
+    grid-column: 4 / span 1;
+    grid-row: 2 / span 2;
+}
+
+.controls {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 1;
+    text-align: center;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.settings {
+    grid-column: 4 / span 1;
+    grid-row: 4 / span 1;
+}
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IoT Dashboard</h1>
+        <div id="sim-device-info">
+            <div class="info-container">
+                <p id="sim-status">SIM Status: --</p>
+                <p id="signal-strength">Signal Strength: --</p>
+                <p id="iccid">ICCID: --</p>
+                <p id="spn">SPN: --</p>
+                <p id="manufacturer">Manufacturer: --</p>
+                <p id="model">Model: --</p>
+                <p id="product-info">Product Info: --</p>
+                <p id="at-config">AT Config: --</p>
+                <p id="pdp-info">PDP Info: --</p>
+                <p id="gps-info">GPS Info: --</p>
+                <p id="gnss-info">GNSS Info: --</p>
+                <p id="voltage-info">Voltage Info: --</p>
+                <p id="temp-info">Temperature Info: --</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="grid-container">
+            <!-- Live Feed -->
+            <section id="live-feed-section" class="grid-item live-feed">
+                <video id="camera-feed" autoplay muted></video>
+            </section>
+
+            <!-- GPS and Battery -->
+            <section id="gps-battery-section" class="grid-item gps-battery">
+                <div id="gps-bar">GPS: --</div>
+                <div id="battery-bar">Battery: --%</div>
+            </section>
+
+            <!-- Temperature Section -->
+            <section id="temperature-display" class="grid-item temperature-section">
+                <form id="temp-form">
+                    <label for="unit">Unit:</label>
+                    <select id="unit" name="unit">
+                        <option value="C">C</option>
+                        <option value="F">F</option>
+                    </select>
+                    <div class="temperature-rows">
+                        <div>TC1: <span id="tc1-value">--</span></div>
+                        <div>TC2: <span id="tc2-value">--</span></div>
+                        <div>TC3: <span id="tc3-value">--</span></div>
+                        <div>TC4: <span id="tc4-value">--</span></div>
+                    </div>
+                    <button type="button" onclick="saveTemp()">Save</button>
+                    <button type="button" onclick="resetTemp()">Reset</button>
+                </form>
+            </section>
+
+            <!-- Control Buttons -->
+            <section id="controls-section" class="grid-item controls">
+                <button onclick="sendData()">Send</button>
+                <button onclick="startTransmission()">Start</button>
+                <button onclick="stopTransmission()">Stop</button>
+            </section>
+        </div>
+
+        <!-- Settings Section -->
+        <section id="settings-section" class="grid-item settings">
+            <h2>Settings</h2>
+            <form id="wifi-ap-form">
+                <h3>WiFi AP</h3>
+                <label for="ap-ssid">SSID:</label>
+                <input type="text" id="ap-ssid">
+                <label for="ap-pass">Password:</label>
+                <input type="password" id="ap-pass">
+            </form>
+            <form id="wifi-client-form">
+                <h3>WiFi Client</h3>
+                <label for="client-ssid">SSID:</label>
+                <input type="text" id="client-ssid">
+                <label for="client-pass">Password:</label>
+                <input type="password" id="client-pass">
+            </form>
+            <form id="database-form">
+                <h3>Database</h3>
+                <label for="db-url">URL:</label>
+                <input type="text" id="db-url">
+                <label for="db-user">User:</label>
+                <input type="text" id="db-user">
+                <label for="db-pass">Password:</label>
+                <input type="password" id="db-pass">
+            </form>
+        </section>
+    </main>
+</body>
+</html>
