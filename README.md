@@ -2,16 +2,29 @@
 
 This is the main branch for Artisanal Project. For the Artisan project, there is an ESP32-S3-SIM7670G-4G. The device will capture images of the pyrolysis process, retrieve GPS data and battery percentage, and send this information to a doctype (Frappe ERP NEXT FRAMEWORK) in the dMRV system via the cellular 4G network.
 
-Connection - [url = https://iotdev.frappe.cloud/
-user = demo@sarvacarbon.com
-pwd = demo@123
-
-Doctype = Image Log
-keys = image , battery_percentage,
-time,gps_data
-]
-
+Header - URL : https://dev-artisan.8848digitalerp.com/api/method/artisan.api.image_log.create_imglog
+         Authorization : Token b441d57636c7de9:38bcfa86df28dfc
+         Content-Type : application/json
+         Body : 
+                  {
+                    "payload": {
+                      "image": "base 64  encoded image string",
+                      "metadata": {
+                        "T1": "25",
+                        "T2": "50",
+                        "T3": "75",
+                        "T4": "100",
+                        "BAT": "85",
+                        "GPS": "$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47"
+                      }
+                    }
+                  }
+Database - User ID : administrator
+           Password : Admin@01
+           Site Home : https://dev-artisan.8848digitalerp.com/app/artisan-pro-dashboard
+           Site Map : Home - Build - DocType - Image Log - Image Log List
 Documentation - https://www.waveshare.com/wiki/ESP32-S3-SIM7670G-4G#Install_Espressif_IDF_Plug-in
+
 
 # ESP32-S3-SIM7670G-4G Development Board Overview
 
