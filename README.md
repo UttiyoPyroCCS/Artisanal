@@ -25,6 +25,8 @@ Database - User ID : administrator
            Site Map : Home - Build - DocType - Image Log - Image Log List
 Documentation - https://www.waveshare.com/wiki/ESP32-S3-SIM7670G-4G#Install_Espressif_IDF_Plug-in
 
+Reference - https://github.com/W5TSU/rc-ravens-LilyGo-T-SimCam/tree/master
+
 
 # ESP32-S3-SIM7670G-4G Development Board Overview
 
